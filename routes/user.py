@@ -22,6 +22,6 @@ def login(form_data: UserLogin, db: Session = Depends(getdb)):  # Assuming UserL
     access_token = create_token_for_user(user)
     return {"access_token": access_token, "token_type": "bearer"}
 
-@router.get("/users/me",tags=['users'])
+@router.get("/token/",tags=['users'])
 def read_users_me(current_user: User = Depends(get_current_user)):
     return current_user

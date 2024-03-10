@@ -23,3 +23,7 @@ async def create_event(data: Event, db: Session = Depends(getdb)):
 @router.delete("/events/{id}", tags=['events'])
 async def delete_event(id: int, db: Session = Depends(getdb)):
     return event_service.delete_event(id,db)
+
+@router.put("/events/{event_id}/register/{user_id}", tags=['events'])
+async def register_event(event_id: int, user_id:int, db: Session =Depends(getdb)):
+    return event_service.sign_up_for_event(user_id,event_id,db)
